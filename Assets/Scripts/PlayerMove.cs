@@ -1,5 +1,5 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -31,11 +31,22 @@ public class PlayerMove : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collider2D)
 	{
+		if (collider2D.tag == "ColorChanger")
+		{
+			SetRandomColor();
+			Destroy(collider2D.gameObject);
+			return;
+			
+		}
 		//Debug.Log(collider2D.tag);
 		if (currentColor != collider2D.tag)	
 		{
-			Debug.Log("GAME OVER");
+			//Debug.Log("GAME OVER");
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			
 		}
+
+		
 	}
 
 	void SetRandomColor()
