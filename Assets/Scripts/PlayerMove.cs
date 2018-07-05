@@ -19,13 +19,20 @@ public class PlayerMove : MonoBehaviour
 	public Color _colorMagenta;
 	public Color _colorPink;
 	
+	public AudioClip _audioJump;
+	public AudioSource _audioSource;
+	
 	void Start () {
 		SetRandomColor();
+		_audioSource.clip = _audioJump;
 	}
 	void Update () {
 		if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
 		{
+			_audioSource.Play();
 			rb.velocity = Vector2.up*jumpForce;
+		
+			
 		}
 	}
 
@@ -39,12 +46,13 @@ public class PlayerMove : MonoBehaviour
 			
 		}
 		//Debug.Log(collider2D.tag);
-		if (currentColor != collider2D.tag)	
+		if (currentColor != collider2D.tag)
 		{
 			//Debug.Log("GAME OVER");
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			
 		}
+		
 
 		
 	}

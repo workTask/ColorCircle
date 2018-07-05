@@ -9,6 +9,7 @@ TagManager:
   - Magenta
   - Syan
   - ColorChanger
+  - Cyan
   layers:
   - Default
   - TransparentFX
